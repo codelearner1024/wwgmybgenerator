@@ -6,11 +6,22 @@
 
     <groupId>com.wwg.mybatis</groupId>
     <artifactId>mybatis-generator</artifactId>
-    <version>1.0-SNAPSHOT</version>
+    <version>1.0-SNAPSHOT</version
+    
+    >
     <!--在原基础上添加 这些就好了-->
     <build>
         <finalName>mybatis-generator</finalName>
+       	<pluginManagement>
         <plugins>
+	        <plugin>
+	            <groupId>org.apache.maven.plugins</groupId>
+	            <artifactId>maven-compiler-plugin</artifactId>
+	            <configuration>
+	                <source>1.8</source>
+	                <target>1.8</target>
+	            </configuration>
+	        </plugin>
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
@@ -38,6 +49,7 @@
                 </dependencies>
             </plugin>
         </plugins>
+       	</pluginManagement>
     </build>
     <!--到此结束-->
 
