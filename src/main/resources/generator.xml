@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE generatorConfiguration PUBLIC
+        "-//mybatis.org//DTD MyBatis Generator Configuration 1.0//EN"
+        "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd" >
+<generatorConfiguration>
+    <!--导入属性配置-->
+    <properties resource="datasource.properties"></properties>
+    <!-- 本地数据库驱动程序jar包的全路径 -->
+    <classPathEntry location="${db.driverLocation}"/>
+    <context id="context" targetRuntime="MyBatis3">
+
+        <!-- 分隔符（隔离关键字）-->
+        <property name="autoDelimitKeywords" value="true"/>
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+        <!--为生成的java文件指定字符编码 -->
+        <property name="javaFileEncoding" value="UTF-8"/>
+        <!--格式化XML代码-->
+        <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
+        <!--格式化java代码-->
+        <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        <!--给生成的类添加toString方法 -->
+        <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
+
+        <plugin type="org.mybatis.generator.plugins.SerializablePlugin">
+            <!--这样配置指实现序列化接口  当然也可以实现接口自定义 序列化方式-->
+            <property name="suppressJavaInterface" value="false"/>
+        </plugin>
+
+        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
+            <property name="searchString" value="Example$"/>
+            <property name="replaceString" value="Criteria"/>
+        </plugin>
+        <!-- 注释生成配置 -->
+        <commentGenerator>
+            <!--不生成注释-->
+            <property name="suppressAllComments" value="true"/>
+            <!--<property name="suppressDate" value="true"/>-->
+        </commentGenerator>
+
+        <!-- 数据库的相关配置 -->
+        <jdbcConnection
+                driverClass="${db.driverClassName}"
+                connectionURL="${db.url}"
+                userId="${db.username}"
+                password="${db.password}"/>
+
+        <javaTypeResolver>
+            <!--
+            true：使用BigDecimal对应DECIMAL和 NUMERIC数据类型
+            false：默认,
+               scale>0;length>18：使用BigDecimal;
+               scale=0;length[10,18]：使用Long；
+               scale=0;length[5,9]：使用Integer；
+               scale=0;length<5：使用Short；
+         -->
+            <property name="forceBigDecimals" value="false"/>
+        </javaTypeResolver>
+
+        <!-- 实体类生成的位置 -->
+        <javaModelGenerator
+                targetPackage="com.wwg.mybatis.entity"
+                targetProject=".\src\main\java">
+            <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
+            <!--  for MyBatis3/MyBatis3Simple 自动为每一个生成的类创建一个构造方法，构造方法包含了所有的field；而不是使用setter-->
+            <!--<property name="constructorBased" value="false"/>-->
+            <!--设置一个根对象，如果设置了这个根对象，那么生成的keyClass或者recordClass会继承这个类；在Table的rootClass属性中可以覆盖该选项,注意：如果在key class或者record class中有root class相同的属性，MBG就不会重新生成这些属性了，包括：1，属性名相同，类型相同，有相同的getter/setter方法；-->
+            <!--<property name="rootClass" value="cn.admin.sms.core.BaseDomain"/>-->
+            <property name="enableSubPackages" value="true"/>
+            <property name="trimStrings" value="true"/>
+        </javaModelGenerator>
+
+        <!-- *Mapper.xml 文件的位置  sqlMapGenerator-->
+        <sqlMapGenerator
+                targetPackage="mybatis/mapper"
+                targetProject=".\src\main\resources">
+            <property name="enableSubPackages" value="true"/>
+        </sqlMapGenerator>
+
+        <!-- Mapper 接口文件的位置 -->
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.wwg.mybatis.mapper"
+                             targetProject=".\src\main\java">
+            <property name="enableSubPackages" value="true"/>
+        </javaClientGenerator>
+
+        <table tableName="ucc_attach" domainObjectName="Attach">
+            <!--用于指定生成实体类时是否使用实际的列名作为实体类的属性名 默认 false 会自动实现Camel Case -->
+        <property name="useActualColumnNames" value="false"/>
+        </table>
+        <table tableName="ucc_company" domainObjectName="Company" />
+        <table tableName="ucc_user_info" domainObjectName="UserInfo" />
+        <table tableName="uuc_masget_account" domainObjectName="masgetAccount" />
+    </context>
+</generatorConfiguration>
