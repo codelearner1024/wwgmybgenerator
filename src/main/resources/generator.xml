@@ -7,6 +7,7 @@
     <properties resource="datasource.properties"></properties>
     <!-- 本地数据库驱动程序jar包的全路径 -->
     <classPathEntry location="${db.driverLocation}"/>
+    <!-- defaultModelType="hierarchical" targetRuntime:MyBatis3Simple或者MyBatis3 -->
     <context id="context" targetRuntime="MyBatis3">
 
         <!-- 分隔符（隔离关键字）-->
@@ -32,10 +33,14 @@
             <property name="replaceString" value="Criteria"/>
         </plugin>
         <!-- 注释生成配置 -->
-        <commentGenerator>
-            <!--不生成注释-->
-            <property name="suppressAllComments" value="true"/>
-            <!--<property name="suppressDate" value="true"/>-->
+        <!-- 使用自定义注释  : type="com.wwg.mybatis.generator.MySQLCommentGenerator"-->
+        <commentGenerator type="com.wwg.mybatis.generator.MyCommentGenerator">
+            <!--是否生成注释-->
+            <!-- <property name="suppressAllComments" value="true"/>
+            <property name="suppressDate" value="true"/> -->
+            <property name="author" value="weigang wu"/>
+      		<property name="dateFormat" value="yyyy-MM-dd"/>
+      		<property name="version" value="V2.6"/>
         </commentGenerator>
 
         <!-- 数据库的相关配置 -->
@@ -62,7 +67,7 @@
         
         -->
 <!--         <javaModelGenerator targetPackage="com.wwg.mybatis.entity" targetProject=".\src\main\java"> -->
-        <javaModelGenerator targetPackage="com.wsn.jfpt.common.dal.model" targetProject="..\JF2.4_SZB\jfpt-common\src\main\java">
+        <javaModelGenerator targetPackage="com.wsn.jfpt.common.uc.model" targetProject="..\JF2.6_MC\jfpt-common\src\main\java">
             <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
             <!--  for MyBatis3/MyBatis3Simple 自动为每一个生成的类创建一个构造方法，构造方法包含了所有的field；而不是使用setter-->
             <!--<property name="constructorBased" value="false"/>-->
@@ -74,13 +79,13 @@
 
         <!-- *Mapper.xml 文件的位置  sqlMapGenerator-->
 <!--         <sqlMapGenerator targetPackage="mybatis/mapper" targetProject=".\src\main\resources"> -->
-        <sqlMapGenerator targetPackage="com.wsn.jfpt.core.mapper" targetProject="..\JF2.4_SZB\jfpt-dam\src\main\java">
+        <sqlMapGenerator targetPackage="com.wsn.jfpt.uc.mapper" targetProject="..\JF2.6_MC\jfpt-uc\src\main\java">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <!-- Mapper 接口文件的位置 -->
 <!--         <javaClientGenerator type="XMLMAPPER" targetPackage="com.wwg.mybatis.mapper" targetProject=".\src\main\java"> -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.wsn.jfpt.core.dao" targetProject="..\JF2.4_SZB\jfpt-dam\src\main\java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.wsn.jfpt.uc.dao" targetProject="..\JF2.6_MC\jfpt-uc\src\main\java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
@@ -92,7 +97,8 @@
         <table tableName="ucc_user_info" domainObjectName="UserInfo" />
         <table tableName="uuc_masget_account" domainObjectName="masgetAccount" /> -->
         <!-- 信贷合同表 -->
-        <table tableName="jf_credit_contract" domainObjectName="CreditContract" />
+        <!-- <table tableName="jf_credit_contract" domainObjectName="CreditContract" /> -->
+        <table tableName="operation_entity" domainObjectName="OperationEntity" />
          
     </context>
 </generatorConfiguration>
