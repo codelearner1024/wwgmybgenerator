@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8" ?>
 <configuration scan="true" scanPeriod="5 seconds">
-    <contextName>lsds</contextName>
+    <contextName>generator</contextName>
     <appender name="STDOUT" class="ch.qos.logback.core.ConsoleAppender">
 
         <!--展示格式 layout-->
@@ -18,7 +18,7 @@
     <timestamp key="bySecond" datePattern="yyyyMMdd'T'HHmmss"/>
 
     <appender name="FILE" class="ch.qos.logback.core.FileAppender">
-        <file>logs/lsds-${bySecond}.log</file>
+        <file>logs/generator-${bySecond}.log</file>
         <append>true</append>
         <!-- encoders are assigned the type
              ch.qos.logback.classic.encoder.PatternLayoutEncoder by default -->
