@@ -20,9 +20,13 @@
         <property name="xmlFormatter" value="org.mybatis.generator.api.dom.DefaultXmlFormatter"/>
         <!--格式化java代码-->
         <property name="javaFormatter" value="org.mybatis.generator.api.dom.DefaultJavaFormatter"/>
+        
         <!--给生成的类添加toString方法 -->
         <plugin type="org.mybatis.generator.plugins.ToStringPlugin"/>
-
+        
+        <!-- 重写xml自动生成策略为全覆盖 -->
+		<plugin type="com.wwg.mybatis.plugins.OverIsMergeablePlugin" />
+		
         <plugin type="org.mybatis.generator.plugins.SerializablePlugin">
             <!--这样配置指实现序列化接口  当然也可以实现接口自定义 序列化方式-->
             <property name="suppressJavaInterface" value="false"/>
