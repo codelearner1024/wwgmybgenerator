@@ -67,11 +67,10 @@
         </javaTypeResolver>
 
         <!-- 实体类生成的位置 
-        JF2.4_SZB\jfpt-common\src\main\java\com\wsn\jfpt\common\dal\model
-        
+            com.wsn.jfpt.common.dal.model
         -->
 <!--         <javaModelGenerator targetPackage="com.wwg.mybatis.entity" targetProject=".\src\main\java"> -->
-        <javaModelGenerator targetPackage="com.wsn.jfpt.common.uc.model" targetProject="..\JF2.6_MC\jfpt-common\src\main\java">
+        <javaModelGenerator targetPackage="com.wsn.jfpt.common.dal.model" targetProject="..\JF2.6_MC\jfpt-common\src\main\java">
             <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
             <!--  for MyBatis3/MyBatis3Simple 自动为每一个生成的类创建一个构造方法，构造方法包含了所有的field；而不是使用setter-->
             <!--<property name="constructorBased" value="false"/>-->
@@ -83,13 +82,13 @@
 
         <!-- *Mapper.xml 文件的位置  sqlMapGenerator-->
 <!--         <sqlMapGenerator targetPackage="mybatis/mapper" targetProject=".\src\main\resources"> -->
-        <sqlMapGenerator targetPackage="com.wsn.jfpt.uc.mapper" targetProject="..\JF2.6_MC\jfpt-uc\src\main\java">
+        <sqlMapGenerator targetPackage="com.wsn.jfpt.core.mapper" targetProject="..\JF2.6_MC\jfpt-dam\src\main\java">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <!-- Mapper 接口文件的位置 -->
 <!--         <javaClientGenerator type="XMLMAPPER" targetPackage="com.wwg.mybatis.mapper" targetProject=".\src\main\java"> -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.wsn.jfpt.uc.dao" targetProject="..\JF2.6_MC\jfpt-uc\src\main\java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.wsn.jfpt.core.dao" targetProject="..\JF2.6_MC\jfpt-dam\src\main\java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
@@ -97,12 +96,8 @@
             用于指定生成实体类时是否使用实际的列名作为实体类的属性名 默认 false 会自动实现Camel Case
         <property name="useActualColumnNames" value="false"/>
         </table>
-        <table tableName="ucc_company" domainObjectName="Company" />
-        <table tableName="ucc_user_info" domainObjectName="UserInfo" />
-        <table tableName="uuc_masget_account" domainObjectName="masgetAccount" /> -->
-        <!-- 信贷合同表 -->
-        <!-- <table tableName="jf_credit_contract" domainObjectName="CreditContract" /> -->
-        <table tableName="operation_entity" domainObjectName="OperationEntity" />
+         -->
+        <table tableName="jf_operation_company" domainObjectName="OperationCompanyModel" />
          
     </context>
 </generatorConfiguration>
