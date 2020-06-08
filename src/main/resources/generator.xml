@@ -44,7 +44,7 @@
             <property name="suppressDate" value="true"/> -->
             <property name="author" value="weigang wu"/>
       		<property name="dateFormat" value="yyyy-MM-dd"/>
-      		<property name="version" value="V2.6"/>
+      		<property name="version" value="V2.9"/>
         </commentGenerator>
 
         <!-- 数据库的相关配置 -->
@@ -70,7 +70,7 @@
             com.wsn.jfpt.common.dal.model
         -->
 <!--         <javaModelGenerator targetPackage="com.wwg.mybatis.entity" targetProject=".\src\main\java"> -->
-        <javaModelGenerator targetPackage="com.wsn.jfpt.common.dal.model" targetProject="..\JF2.6_MC\jfpt-common\src\main\java">
+        <javaModelGenerator targetPackage="com.wsn.jfpt.common.dal.model" targetProject="..\trunk\jfpt-common\src\main\java">
             <!-- 在targetPackage的基础上，根据数据库的schema再生成一层package，最终生成的类放在这个package下，默认为false -->
             <!--  for MyBatis3/MyBatis3Simple 自动为每一个生成的类创建一个构造方法，构造方法包含了所有的field；而不是使用setter-->
             <!--<property name="constructorBased" value="false"/>-->
@@ -82,13 +82,13 @@
 
         <!-- *Mapper.xml 文件的位置  sqlMapGenerator-->
 <!--         <sqlMapGenerator targetPackage="mybatis/mapper" targetProject=".\src\main\resources"> -->
-        <sqlMapGenerator targetPackage="com.wsn.jfpt.core.mapper" targetProject="..\JF2.6_MC\jfpt-dam\src\main\java">
+        <sqlMapGenerator targetPackage="com.wsn.jfpt.core.mapper" targetProject="..\trunk\jfpt-dam\src\main\java">
             <property name="enableSubPackages" value="true"/>
         </sqlMapGenerator>
 
         <!-- Mapper 接口文件的位置 -->
 <!--         <javaClientGenerator type="XMLMAPPER" targetPackage="com.wwg.mybatis.mapper" targetProject=".\src\main\java"> -->
-        <javaClientGenerator type="XMLMAPPER" targetPackage="com.wsn.jfpt.core.dao" targetProject="..\JF2.6_MC\jfpt-dam\src\main\java">
+        <javaClientGenerator type="XMLMAPPER" targetPackage="com.wsn.jfpt.core.dao" targetProject="..\trunk\jfpt-dam\src\main\java">
             <property name="enableSubPackages" value="true"/>
         </javaClientGenerator>
 
@@ -97,7 +97,7 @@
         <property name="useActualColumnNames" value="false"/>
         </table>
          -->
-        <table tableName="jf_operation_company" domainObjectName="OperationCompanyModel" />
+        <table tableName="jf_rate_update" domainObjectName="RateUpdateModel" />
          
     </context>
 </generatorConfiguration>
